@@ -172,7 +172,7 @@ function renderWork() {
   const spotlight2 = spotlights.find(s => s.position === 2);
 
   function renderCardGroup(cards, startIndex) {
-    return cards.map((p, i) => `
+    let html = cards.map((p, i) => `
       <article class="project-card" data-slug="${p.id}" data-delay="${startIndex + i}">
         <div class="project-card-image-wrap">
           ${placeholderBlock(p.id, escapeHtml(p.title + ' — ' + p.category))}
@@ -186,6 +186,22 @@ function renderWork() {
         </div>
       </article>
     `).join('');
+
+    // If last row would have a lone card (remainder 1 after groups of 3), add a placeholder
+    const remainder = cards.length % 3;
+    if (remainder === 1) {
+      html += `<article class="project-card project-card-placeholder" data-delay="${startIndex + cards.length}">
+        <div class="project-card-image-wrap">
+          <div class="placeholder-gradient placeholder-default"></div>
+        </div>
+        <div class="project-card-info">
+          <div class="project-card-title">Lorem Ipsum</div>
+          <div class="project-card-year">2024</div>
+        </div>
+      </article>`;
+    }
+
+    return html;
   }
 
   app.innerHTML = `
