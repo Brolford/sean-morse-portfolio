@@ -54,19 +54,23 @@ export const spotlights = [
     position: 1,           // After the hero headline
     images: [
       { src: "/images/liquid-iv/spotlight-01.jpg", duration: 2000 },
-      { src: "/images/liquid-iv/spotlight-02.jpg", duration: 3000 },
-      { src: "/images/liquid-iv/spotlight-03.jpg", duration: 1000 },
-      { src: "/images/liquid-iv/spotlight-04.jpg", duration: 2000 },
+      { src: "/images/liquid-iv/spotlight-02.jpg", duration: 1500 },
+      { src: "/images/liquid-iv/spotlight-03.jpg", duration: 1250 },
+      { src: "/images/liquid-iv/spotlight-04.jpg", duration: 1750 },
+      { src: "/images/liquid-iv/spotlight-05.jpg", duration: 1500 },
+      { src: "/images/liquid-iv/spotlight-06.jpg", duration: 1250 },
     ]
   },
   {
     projectId: "leisure-project",
     position: 2,           // Mid-grid break
     images: [
-      { src: "/images/leisure-project/spotlight-01.jpg", duration: 3000 },
-      { src: "/images/leisure-project/spotlight-02.jpg", duration: 2000 },
-      { src: "/images/leisure-project/spotlight-03.jpg", duration: 1000 },
-      { src: "/images/leisure-project/spotlight-04.jpg", duration: 2000 },
+      { src: "/images/leisure-project/spotlight-01.jpg", duration: 1750 },
+      { src: "/images/leisure-project/spotlight-02.jpg", duration: 1250 },
+      { src: "/images/leisure-project/spotlight-03.jpg", duration: 2000 },
+      { src: "/images/leisure-project/spotlight-04.jpg", duration: 1500 },
+      { src: "/images/leisure-project/spotlight-05.jpg", duration: 1250 },
+      { src: "/images/leisure-project/spotlight-06.jpg", duration: 1750 },
     ]
   },
 ];
