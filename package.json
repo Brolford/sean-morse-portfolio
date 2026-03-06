@@ -1,0 +1,13 @@
+{
+  "name": "sean-morse-portfolio",
+  "private": true,
+  "scripts": {
+    "dev": "npx tinacms dev -c \"npx serve .\"",
+    "build": "npx tinacms build"
+  },
+  "devDependencies": {
+    "tinacms": "^2.0.0",
+    "@tinacms/cli": "^1.6.0",
+    "serve": "^14.0.0"
+  }
+}

@@ -2,7 +2,21 @@
 // app.js — Routing, View Rendering, Animations
 // ============================================================================
 
-import { projects, spotlights } from './projects.js';
+// --- Data Loading ---
+
+let projects = [];
+let spotlights = [];
+
+async function loadData() {
+  const [projRes, spotRes] = await Promise.all([
+    fetch('/data/projects.json'),
+    fetch('/data/spotlights.json'),
+  ]);
+  const projData = await projRes.json();
+  const spotData = await spotRes.json();
+  projects = projData.items || projData;
+  spotlights = spotData.items || spotData;
+}
 
 // --- Helpers ---
 
@@ -29,7 +43,6 @@ function getPlaceholderClass(id) {
 
 function imageOrPlaceholder(src, alt, projectId, extraClass = '') {
   const placeholderCls = getPlaceholderClass(projectId);
-  // Try real image; fall back to gradient placeholder
   return `<img
     src="${src}"
     alt="${alt}"
@@ -43,7 +56,6 @@ function imageOrPlaceholder(src, alt, projectId, extraClass = '') {
   ></div>`;
 }
 
-// For cases where we know images won't exist yet, show placeholder directly
 function placeholderBlock(projectId, alt = '', extraClass = '') {
   const placeholderCls = getPlaceholderClass(projectId);
   return `<div class="placeholder-gradient ${placeholderCls} ${extraClass}" role="img" aria-label="${alt}"></div>`;
@@ -72,7 +84,6 @@ function router() {
   const route = getRoute();
   const match = route.match(/^#\/work\/(.+)$/);
 
-  // Fade out
   app.classList.remove('active');
 
   setTimeout(() => {
@@ -96,13 +107,10 @@ function router() {
       renderWork();
     }
 
-    // Update nav active states
     updateNav(route);
 
-    // Fade in
     requestAnimationFrame(() => {
       app.classList.add('active');
-      // Initialize animations and spotlights after render
       setTimeout(() => {
         initAnimations();
         initSpotlights();
@@ -164,8 +172,7 @@ function renderSpotlightHtml(spotlight) {
 
 function renderWork() {
   const featured = projects.filter(p => p.featured);
-  // Split featured into groups around spotlights
-  const splitAt = 4; // First 4 cards, then break
+  const splitAt = 4;
   const group1 = featured.slice(0, splitAt);
   const group2 = featured.slice(splitAt);
 
@@ -188,7 +195,6 @@ function renderWork() {
       </article>
     `).join('');
 
-    // If last row would have a lone card (remainder 1 after groups of 3), add a placeholder
     const remainder = cards.length % 3;
     if (remainder === 1) {
       html += `<article class="project-card" data-slug="lorem-ipsum" data-delay="${startIndex + cards.length}">
@@ -241,7 +247,6 @@ function renderWork() {
     ${renderFooter()}
   `;
 
-  // Work page CTA → open contact modal
   const workTrigger = app.querySelector('#work-contact-trigger');
   if (workTrigger) {
     workTrigger.addEventListener('click', (e) => {
@@ -251,17 +256,15 @@ function renderWork() {
     });
   }
 
-  // Card click handlers
   app.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('click', () => {
       navigate(`#/work/${card.dataset.slug}`);
     });
   });
 
-  // Spotlight click handlers
   app.querySelectorAll('.spotlight').forEach(el => {
     el.addEventListener('click', (e) => {
-      if (e.target.closest('.spotlight-link')) return; // let link handle it
+      if (e.target.closest('.spotlight-link')) return;
       navigate(`#/work/${el.dataset.project}`);
     });
   });
@@ -298,9 +301,7 @@ function renderCaseStudy(slug) {
     `<div class="award-badge">${escapeHtml(a)}</div>`
   ).join('');
 
-  // Build gallery with alternating layouts
   const galleryHtml = project.images.map((img, i) => {
-    // Alternate: full-bleed, two-up pair, centered
     const alt = escapeHtml(project.title + ' project image ' + (i + 1));
     if (i === 0) {
       return `<div class="case-gallery-item full-bleed container">
@@ -378,7 +379,6 @@ function renderCaseStudy(slug) {
     ${renderFooter()}
   `;
 
-  // Accordion handlers
   app.querySelectorAll('.accordion-trigger').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.parentElement;
@@ -441,7 +441,6 @@ function renderAbout() {
       </div>
 
       <div class="about-photo-wrap">
-        <!-- Replace with Sean's clay portrait photo from sfxm.space/about -->
         <div class="placeholder-gradient placeholder-about" role="img" aria-label="Sean Morse portrait"></div>
       </div>
     </section>
@@ -486,7 +485,6 @@ function renderFooter() {
 const spotlightTimers = [];
 
 function initSpotlights() {
-  // Clear any previous timers
   spotlightTimers.forEach(id => clearTimeout(id));
   spotlightTimers.length = 0;
 
@@ -519,7 +517,6 @@ function initSpotlights() {
 // --- Scroll Animations (IntersectionObserver) ---
 
 function initAnimations() {
-  // Staggered card entrance
   const cards = app.querySelectorAll('.project-card, .archive-card');
   const cardObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -535,7 +532,6 @@ function initAnimations() {
 
   cards.forEach(card => cardObserver.observe(card));
 
-  // Gallery image fade-up on scroll
   const galleryItems = app.querySelectorAll('.case-gallery-item');
   const galleryObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -604,7 +600,6 @@ function initContactModal() {
   const mobileContactTriggers = document.querySelectorAll('.mobile-contact-trigger');
 
   function openModal() {
-    // Reset form state
     form.reset();
     form.style.display = '';
     const title = form.parentElement.querySelector('.contact-modal-title');
@@ -630,7 +625,6 @@ function initContactModal() {
   mobileContactTriggers.forEach(el => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
-      // Close mobile nav if open
       document.querySelector('.nav-hamburger')?.classList.remove('open');
       document.querySelector('.mobile-nav-overlay')?.classList.remove('open');
       document.body.style.overflow = '';
@@ -690,7 +684,8 @@ function initContactModal() {
 
 window.addEventListener('hashchange', router);
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadData();
   initNavScroll();
   initMobileNav();
   initContactModal();
