@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sean Morse — Design Director</title>
+  <meta name="description" content="Sean Morse is a Design Director specializing in brand development and packaging design for CPG brands.">
+
+  <!-- Social / Link Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sean Morse — Design Director">
+  <meta property="og:description" content="Brand development and packaging design for CPG brands. Portland, OR.">
+  <meta property="og:image" content="https://dev.sean-morse-portfolio.pages.dev/images/og-image.jpg">
+  <meta property="og:url" content="https://dev.sean-morse-portfolio.pages.dev">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sean Morse — Design Director">
+  <meta name="twitter:description" content="Brand development and packaging design for CPG brands. Portland, OR.">
+  <meta name="twitter:image" content="https://dev.sean-morse-portfolio.pages.dev/images/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=DM+Sans:wght@300;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="#/" data-nav="work">Work</a>
+        <a href="#/archive" data-nav="archive">Archive</a>
+      </div>
+      <div class="nav-center">
+        <a href="#/">Sean Morse</a>
+      </div>
+      <div class="nav-right">
+        <a href="#/about" data-nav="about">About</a>
+        <a href="#" data-nav="contact" id="nav-contact" style="margin-left: 24px;">Contact</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav-overlay">
+    <a href="#/">Work</a>
+    <a href="#/archive">Archive</a>
+    <a href="#/about">About</a>
+    <a href="#" class="mobile-contact-trigger">Contact</a>
+  </div>
+
+  <!-- Contact Modal -->
+  <div class="contact-overlay" id="contact-overlay">
+    <div class="contact-backdrop" id="contact-backdrop"></div>
+    <div class="contact-modal">
+      <button class="contact-modal-close" id="contact-close" aria-label="Close">&times;</button>
+      <h2 class="contact-modal-title">Get in touch.</h2>
+      <p class="contact-modal-sub">Have a project in mind? Fill this out and it'll open in your email, ready to send.</p>
+      <form class="contact-form" id="contact-form">
+        <div class="contact-row">
+          <div class="contact-field">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="contact-field">
+            <label for="contact-company">Company</label>
+            <input type="text" id="contact-company" name="company" placeholder="Your company" required>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-field">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="contact-field">
+            <label for="contact-project-type">Project Type</label>
+            <select id="contact-project-type" name="project_type" required>
+              <option value="" disabled selected>Select a service</option>
+              <option value="Brand Identity">Brand Identity</option>
+              <option value="Packaging Design">Packaging Design</option>
+              <option value="Brand Strategy">Brand Strategy</option>
+              <option value="Art Direction">Art Direction</option>
+              <option value="Full Brand Development">Full Brand Development</option>
+              <option value="Brand Refresh / Evolution">Brand Refresh / Evolution</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="contact-field">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" placeholder="Tell Sean about your project..." required></textarea>
+        </div>
+        <button type="submit" class="contact-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- App Mount -->
+  <main id="app" class="page-view"></main>
+
+  <!-- App Script -->
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
