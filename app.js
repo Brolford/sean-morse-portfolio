@@ -2,7 +2,21 @@
 // app.js — Routing, View Rendering, Animations
 // ============================================================================
 
-import { projects, spotlights } from './projects.js';
+// --- Data Loading ---
+
+let projects = [];
+let spotlights = [];
+
+async function loadData() {
+  const [projRes, spotRes] = await Promise.all([
+    fetch('/data/projects.json'),
+    fetch('/data/spotlights.json'),
+  ]);
+  const projData = await projRes.json();
+  const spotData = await spotRes.json();
+  projects = projData.items || projData;
+  spotlights = spotData.items || spotData;
+}
 
 // --- Helpers ---
 
@@ -690,7 +704,8 @@ function initContactModal() {
 
 window.addEventListener('hashchange', router);
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadData();
   initNavScroll();
   initMobileNav();
   initContactModal();

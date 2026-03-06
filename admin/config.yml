@@ -1,0 +1,81 @@
+backend:
+  name: github
+  repo: Brolford/sean-morse-portfolio
+  branch: cms/decap
+
+# For local testing: run `npx decap-server` and uncomment the line below
+# local_backend: true
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    label_singular: "Project"
+    description: "Add, edit, or remove portfolio projects."
+    file: "data/projects.json"
+    format: "json"
+    fields:
+      - name: "items"
+        label: "Projects"
+        label_singular: "Project"
+        widget: "list"
+        fields:
+          - { name: "id", label: "URL Slug", widget: "string", hint: "Lowercase, hyphens, no spaces. Used in the URL (e.g. liquid-iv)" }
+          - { name: "title", label: "Project Title", widget: "string" }
+          - { name: "tagline", label: "Tagline", widget: "string", required: false, hint: "Short brand line shown on the case study page" }
+          - { name: "category", label: "Category", widget: "string", hint: "e.g. Brand & Packaging, Brand Identity" }
+          - { name: "year", label: "Year", widget: "string" }
+          - { name: "client", label: "Client", widget: "string" }
+          - { name: "agency", label: "Agency", widget: "string", hint: "Agency name or 'Freelance'" }
+          - { name: "services", label: "Services", widget: "string", hint: "Comma-separated list" }
+          - name: "credits"
+            label: "Credits"
+            widget: "list"
+            fields:
+              - { name: "name", label: "Name", widget: "string" }
+              - { name: "role", label: "Role", widget: "string" }
+          - name: "awards"
+            label: "Awards"
+            widget: "list"
+            field: { name: "award", label: "Award", widget: "string" }
+            required: false
+          - { name: "thumbnail", label: "Thumbnail Image", widget: "image", required: false }
+          - { name: "heroImage", label: "Hero Image", widget: "image", required: false }
+          - { name: "summary", label: "Summary", widget: "string", hint: "One sentence — what was the project" }
+          - { name: "body", label: "Full Description", widget: "text" }
+          - name: "sections"
+            label: "Case Study Sections"
+            widget: "list"
+            required: false
+            fields:
+              - { name: "title", label: "Section Title", widget: "string", hint: "e.g. Problem, Solution, Results" }
+              - { name: "body", label: "Section Body", widget: "text" }
+          - name: "images"
+            label: "Gallery Images"
+            widget: "list"
+            required: false
+            field: { name: "image", label: "Image", widget: "image" }
+          - { name: "featured", label: "Featured on Work Page", widget: "boolean", default: true }
+
+  - name: "spotlights"
+    label: "Spotlights"
+    label_singular: "Spotlight"
+    description: "Full-width rotating image breaks on the Work page."
+    file: "data/spotlights.json"
+    format: "json"
+    fields:
+      - name: "items"
+        label: "Spotlights"
+        label_singular: "Spotlight"
+        widget: "list"
+        fields:
+          - { name: "projectId", label: "Project ID", widget: "string", hint: "Must match a project's URL slug" }
+          - { name: "position", label: "Position", widget: "number", value_type: "int", hint: "1 = after hero, 2 = mid-grid" }
+          - name: "images"
+            label: "Rotating Images"
+            widget: "list"
+            fields:
+              - { name: "src", label: "Image", widget: "image" }
+              - { name: "duration", label: "Duration (ms)", widget: "number", value_type: "int", default: 1500, hint: "How long this image shows (1250-2000ms)" }
