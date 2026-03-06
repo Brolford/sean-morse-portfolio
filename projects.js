@@ -34,6 +34,43 @@
 //
 // ============================================================================
 
+// ============================================================================
+// SPOTLIGHTS — Full-width rotating image breaks on the Work page
+// ============================================================================
+//
+// HOW TO EDIT:
+//   - Each spotlight highlights ONE project with multiple rotating images
+//   - "projectId" must match a project's id above
+//   - "images" is an array of { src, duration } where duration is in milliseconds
+//   - Varying durations creates an organic, non-mechanical rhythm
+//   - "position" is which slot in the work page (1 = after hero, 2 = mid-grid, etc.)
+//   - Until real images are added, gradient placeholders will show automatically
+//
+// ============================================================================
+
+export const spotlights = [
+  {
+    projectId: "liquid-iv",
+    position: 1,           // After the hero headline
+    images: [
+      { src: "/images/liquid-iv/spotlight-01.jpg", duration: 2000 },
+      { src: "/images/liquid-iv/spotlight-02.jpg", duration: 3000 },
+      { src: "/images/liquid-iv/spotlight-03.jpg", duration: 1000 },
+      { src: "/images/liquid-iv/spotlight-04.jpg", duration: 2000 },
+    ]
+  },
+  {
+    projectId: "leisure-project",
+    position: 2,           // Mid-grid break
+    images: [
+      { src: "/images/leisure-project/spotlight-01.jpg", duration: 3000 },
+      { src: "/images/leisure-project/spotlight-02.jpg", duration: 2000 },
+      { src: "/images/leisure-project/spotlight-03.jpg", duration: 1000 },
+      { src: "/images/leisure-project/spotlight-04.jpg", duration: 2000 },
+    ]
+  },
+];
+
 export const projects = [
 
   // ── LIQUID I.V. ──────────────────────────────────────────────────────

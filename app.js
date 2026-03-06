@@ -2,7 +2,7 @@
 // app.js — Routing, View Rendering, Animations
 // ============================================================================
 
-import { projects } from './projects.js';
+import { projects, spotlights } from './projects.js';
 
 // --- Helpers ---
 
@@ -101,8 +101,11 @@ function router() {
     // Fade in
     requestAnimationFrame(() => {
       app.classList.add('active');
-      // Initialize animations after render
-      setTimeout(() => initAnimations(), 50);
+      // Initialize animations and spotlights after render
+      setTimeout(() => {
+        initAnimations();
+        initSpotlights();
+      }, 50);
     });
   }, 200);
 }
@@ -123,8 +126,66 @@ function updateNav(route) {
 
 // --- Views ---
 
+function renderSpotlightHtml(spotlight) {
+  const project = projects.find(p => p.id === spotlight.projectId);
+  if (!project) return '';
+  const placeholderCls = getPlaceholderClass(spotlight.projectId);
+
+  const slides = spotlight.images.map((img, i) => `
+    <div class="spotlight-slide ${i === 0 ? 'active' : ''}" data-duration="${img.duration}">
+      <img
+        src="${img.src}"
+        alt="${escapeHtml(project.title)} spotlight ${i + 1}"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+      />
+      <div class="placeholder-gradient ${placeholderCls}" style="display:none;"></div>
+    </div>
+  `).join('');
+
+  return `
+    <section class="spotlight" data-project="${spotlight.projectId}">
+      <div class="spotlight-slides">
+        ${slides}
+      </div>
+      <div class="spotlight-overlay">
+        <a href="#/work/${spotlight.projectId}" class="spotlight-link">
+          <span class="spotlight-title">${escapeHtml(project.title)}</span>
+          <span class="spotlight-tagline">${escapeHtml(project.tagline || project.category)}</span>
+        </a>
+      </div>
+      <div class="spotlight-progress">
+        ${spotlight.images.map((_, i) => `<div class="spotlight-dot ${i === 0 ? 'active' : ''}"></div>`).join('')}
+      </div>
+    </section>
+  `;
+}
+
 function renderWork() {
   const featured = projects.filter(p => p.featured);
+  // Split featured into groups around spotlights
+  const splitAt = 4; // First 4 cards, then break
+  const group1 = featured.slice(0, splitAt);
+  const group2 = featured.slice(splitAt);
+
+  const spotlight1 = spotlights.find(s => s.position === 1);
+  const spotlight2 = spotlights.find(s => s.position === 2);
+
+  function renderCardGroup(cards, startIndex) {
+    return cards.map((p, i) => `
+      <article class="project-card" data-slug="${p.id}" data-delay="${startIndex + i}">
+        <div class="project-card-image-wrap">
+          ${placeholderBlock(p.id, escapeHtml(p.title + ' — ' + p.category))}
+          <div class="project-card-overlay">
+            <span class="label">${escapeHtml(p.category)}</span>
+          </div>
+        </div>
+        <div class="project-card-info">
+          <div class="project-card-title">${escapeHtml(p.title)}</div>
+          <div class="project-card-year">${escapeHtml(p.year)}</div>
+        </div>
+      </article>
+    `).join('');
+  }
 
   app.innerHTML = `
     <section class="hero container">
@@ -132,24 +193,23 @@ function renderWork() {
       <p class="label hero-subtitle">Brand Development & Packaging Design</p>
     </section>
 
+    ${spotlight1 ? renderSpotlightHtml(spotlight1) : ''}
+
     <section class="container">
       <div class="project-grid">
-        ${featured.map((p, i) => `
-          <article class="project-card" data-slug="${p.id}" data-delay="${i}">
-            <div class="project-card-image-wrap">
-              ${placeholderBlock(p.id, escapeHtml(p.title + ' — ' + p.category))}
-              <div class="project-card-overlay">
-                <span class="label">${escapeHtml(p.category)}</span>
-              </div>
-            </div>
-            <div class="project-card-info">
-              <div class="project-card-title">${escapeHtml(p.title)}</div>
-              <div class="project-card-year">${escapeHtml(p.year)}</div>
-            </div>
-          </article>
-        `).join('')}
+        ${renderCardGroup(group1, 0)}
       </div>
     </section>
+
+    ${spotlight2 ? renderSpotlightHtml(spotlight2) : ''}
+
+    ${group2.length > 0 ? `
+      <section class="container">
+        <div class="project-grid">
+          ${renderCardGroup(group2, splitAt)}
+        </div>
+      </section>
+    ` : ''}
 
     <section class="work-cta container">
       <h2 class="display-md">Have a project in mind?</h2>
@@ -174,6 +234,14 @@ function renderWork() {
   app.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('click', () => {
       navigate(`#/work/${card.dataset.slug}`);
+    });
+  });
+
+  // Spotlight click handlers
+  app.querySelectorAll('.spotlight').forEach(el => {
+    el.addEventListener('click', (e) => {
+      if (e.target.closest('.spotlight-link')) return; // let link handle it
+      navigate(`#/work/${el.dataset.project}`);
     });
   });
 }
@@ -390,6 +458,41 @@ function renderFooter() {
       </div>
     </footer>
   `;
+}
+
+// --- Spotlight Slideshows ---
+
+const spotlightTimers = [];
+
+function initSpotlights() {
+  // Clear any previous timers
+  spotlightTimers.forEach(id => clearTimeout(id));
+  spotlightTimers.length = 0;
+
+  document.querySelectorAll('.spotlight').forEach(el => {
+    const slides = el.querySelectorAll('.spotlight-slide');
+    const dots = el.querySelectorAll('.spotlight-dot');
+    if (slides.length < 2) return;
+
+    let current = 0;
+
+    function advance() {
+      const duration = parseInt(slides[current].dataset.duration) || 2000;
+
+      const timerId = setTimeout(() => {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+        advance();
+      }, duration);
+
+      spotlightTimers.push(timerId);
+    }
+
+    advance();
+  });
 }
 
 // --- Scroll Animations (IntersectionObserver) ---

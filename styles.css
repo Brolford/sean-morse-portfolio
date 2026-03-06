@@ -841,6 +841,106 @@ button {
   opacity: 0.4;
 }
 
+/* --- Spotlight Sections --- */
+.spotlight {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  max-height: 700px;
+  overflow: hidden;
+  margin: var(--space-lg) 0;
+  cursor: pointer;
+}
+
+.spotlight-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.spotlight-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.spotlight-slide.active {
+  opacity: 1;
+}
+
+.spotlight-slide img,
+.spotlight-slide .placeholder-gradient {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spotlight-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 40%);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-lg) var(--space-fluid);
+  z-index: 2;
+}
+
+.spotlight-link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--color-white);
+  transition: opacity var(--transition-fast);
+}
+
+.spotlight-link:hover {
+  opacity: 0.85;
+}
+
+.spotlight-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.1;
+}
+
+.spotlight-tagline {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(14px, 1.5vw, 18px);
+  opacity: 0.85;
+}
+
+.spotlight-progress {
+  position: absolute;
+  bottom: var(--space-md);
+  right: var(--space-fluid);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.spotlight-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: background 0.3s ease;
+}
+
+.spotlight-dot.active {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+@media (max-width: 600px) {
+  .spotlight {
+    height: 45vh;
+    min-height: 280px;
+  }
+}
+
 /* --- Gradient Placeholders --- */
 .placeholder-gradient {
   display: block;
