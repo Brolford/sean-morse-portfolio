@@ -2,6 +2,8 @@ backend:
   name: github
   repo: Brolford/sean-morse-portfolio
   branch: cms/decap
+  auth_type: pkce
+  app_id: Ov23li5XiHuRaR7k8uvo
 
 # For local testing: run `npx decap-server` and uncomment the line below
 # local_backend: true
