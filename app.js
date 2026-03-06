@@ -149,8 +149,9 @@ function renderSpotlightHtml(spotlight) {
       </div>
       <div class="spotlight-overlay">
         <a href="#/work/${spotlight.projectId}" class="spotlight-link">
+          <span class="spotlight-category label">${escapeHtml(project.category)}</span>
           <span class="spotlight-title">${escapeHtml(project.title)}</span>
-          <span class="spotlight-tagline">${escapeHtml(project.tagline || project.category)}</span>
+          <span class="spotlight-tagline">${escapeHtml(project.tagline || project.summary)}</span>
         </a>
       </div>
       <div class="spotlight-progress">

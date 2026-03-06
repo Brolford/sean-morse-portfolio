@@ -899,6 +899,11 @@ button {
   opacity: 0.85;
 }
 
+.spotlight-category {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
 .spotlight-title {
   font-family: var(--font-display);
   font-weight: 300;
