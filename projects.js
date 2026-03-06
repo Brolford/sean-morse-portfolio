@@ -77,6 +77,37 @@ export const spotlights = [
 
 export const projects = [
 
+  // ── PLACEHOLDER (replace with real project) ─────────────────────────
+  {
+    id: "lorem-ipsum",
+    title: "Lorem Ipsum",
+    tagline: "Dolor Sit Amet Consectetur.",
+    category: "Brand & Packaging",
+    year: "2024",
+    client: "Lorem Ipsum Co.",
+    agency: "Freelance",
+    services: "Brand Strategy, Visual Identity, Packaging Design",
+    credits: [
+      { name: "Sean Morse", role: "Design Director" }
+    ],
+    awards: [],
+    thumbnail: "/images/lorem-ipsum/thumb.jpg",
+    heroImage: "/images/lorem-ipsum/hero.jpg",
+    summary: "Full brand development and packaging system for a premium consumer goods brand.",
+    body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
+    sections: [
+      { title: "Problem", body: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam." },
+      { title: "Solution", body: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores." },
+      { title: "Results", body: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit." }
+    ],
+    images: [
+      "/images/lorem-ipsum/01.jpg",
+      "/images/lorem-ipsum/02.jpg",
+      "/images/lorem-ipsum/03.jpg",
+    ],
+    featured: false,  // Not in grid — only used as placeholder card target
+  },
+
   // ── LIQUID I.V. ──────────────────────────────────────────────────────
   {
     id: "liquid-iv",                             // URL slug
