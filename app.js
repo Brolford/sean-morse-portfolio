@@ -232,7 +232,39 @@ function renderWork() {
       <p class="label hero-subtitle">Brand Development & Packaging Design</p>
     </section>
 
-    <!-- Module 2: Hero Notables (Proof Stats Bar) -->
+    <!-- Brand Marquee (top ticker) -->
+    <section class="brand-marquee" aria-hidden="true">
+      <div class="brand-marquee-row">
+        <div class="brand-marquee-track">
+          <span class="brand-marquee-item">Liquid I.V.</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">V8</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Alec's Ice Cream</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Over Easy</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Elenita Mezcal</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Leisure Project</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Mimio</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">SmartyPants</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Gimme</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Joolies</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Dream Pops</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Picture Day</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Liquid I.V.</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">V8</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Alec's Ice Cream</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Over Easy</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Elenita Mezcal</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Leisure Project</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Mimio</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">SmartyPants</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Gimme</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Joolies</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Dream Pops</span><span class="brand-marquee-sep"> &mdash; </span>
+          <span class="brand-marquee-item">Picture Day</span><span class="brand-marquee-sep"> &mdash; </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero Notables (Proof Stats Bar) -->
     <section class="hero-notables">
       <div class="notables-grid">
         <div class="notable-item">
@@ -245,7 +277,7 @@ function renderWork() {
         </div>
         <div class="notable-item">
           <div class="notable-stat" data-target="1" data-prefix="#">#1</div>
-          <div class="notable-label">Dieline Award — Dairy Category</div>
+          <div class="notable-label">Dieline Award &mdash; Dairy Category</div>
         </div>
         <div class="notable-item">
           <div class="notable-stat" data-target="15" data-suffix="+">15+</div>
@@ -254,90 +286,30 @@ function renderWork() {
       </div>
     </section>
 
-    <!-- Module 1: Brand Marquee (Client Logo Ticker) -->
-    <section class="brand-marquee" aria-hidden="true">
-      <div class="brand-marquee-row">
-        <div class="brand-marquee-track">
-          <span class="brand-marquee-item">Liquid I.V.</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">V8</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Alec's Ice Cream</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Over Easy</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Elenita Mezcal</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Leisure Project</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Mimio</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">SmartyPants</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Gimme</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Joolies</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Dream Pops</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Picture Day</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Liquid I.V.</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">V8</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Alec's Ice Cream</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Over Easy</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Elenita Mezcal</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Leisure Project</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Mimio</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">SmartyPants</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Gimme</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Joolies</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Dream Pops</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Picture Day</span><span class="brand-marquee-sep">&middot;</span>
-        </div>
-      </div>
-      <div class="brand-marquee-row">
-        <div class="brand-marquee-track">
-          <span class="brand-marquee-item">Picture Day</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">SmartyPants</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Alec's Ice Cream</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Mimio</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Leisure Project</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">V8</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Over Easy</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Elenita Mezcal</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Liquid I.V.</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Dream Pops</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Joolies</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Gimme</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Picture Day</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">SmartyPants</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Alec's Ice Cream</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Mimio</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Leisure Project</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">V8</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Over Easy</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Elenita Mezcal</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Liquid I.V.</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Dream Pops</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Joolies</span><span class="brand-marquee-sep">&middot;</span>
-          <span class="brand-marquee-item">Gimme</span><span class="brand-marquee-sep">&middot;</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Module 3: Discipline Ticker (Work Type Scroll) -->
+    <!-- Discipline Ticker (bottom ticker) -->
     <section class="discipline-ticker" aria-hidden="true">
       <div class="discipline-ticker-row">
         <div class="discipline-ticker-track">
-          <span class="discipline-ticker-item">Brand Development</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Packaging Design</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Brand Strategy</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Art Direction</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Visual Identity</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Brand Architecture</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Structural Packaging</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Campaign Design</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Brand Evolution</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Retail Shelf Design</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Brand Development</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Packaging Design</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Brand Strategy</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Art Direction</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Visual Identity</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Brand Architecture</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Structural Packaging</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Campaign Design</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Brand Evolution</span><span class="discipline-ticker-sep"> — </span>
-          <span class="discipline-ticker-item">Retail Shelf Design</span><span class="discipline-ticker-sep"> — </span>
+          <span class="discipline-ticker-item">Brand Development</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Packaging Design</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Brand Strategy</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Art Direction</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Visual Identity</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Brand Architecture</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Structural Packaging</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Campaign Design</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Brand Evolution</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Retail Shelf Design</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Brand Development</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Packaging Design</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Brand Strategy</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Art Direction</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Visual Identity</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Brand Architecture</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Structural Packaging</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Campaign Design</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Brand Evolution</span><span class="discipline-ticker-sep">&middot;</span>
+          <span class="discipline-ticker-item">Retail Shelf Design</span><span class="discipline-ticker-sep">&middot;</span>
         </div>
       </div>
     </section>
