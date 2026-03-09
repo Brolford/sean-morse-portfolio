@@ -1,0 +1,207 @@
+/* ==========================================================================
+   HOMEPAGE ANIMATIONS — V2 Modules
+   Brand Marquee · Hero Notables · Discipline Ticker
+   ========================================================================== */
+
+/* --- Module 2: Hero Notables (Proof Stats Bar) --- */
+.hero-notables {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.notables-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+}
+
+.notable-item {
+  padding: 0 16px;
+  border-right: 1px solid var(--color-divider);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.notable-item:last-child {
+  border-right: none;
+}
+
+.notable-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.notable-stat {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(32px, 5vw, 56px);
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.notable-label {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-top: 6px;
+}
+
+/* Notables — mobile 2x2 */
+@media (max-width: 640px) {
+  .notables-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 0;
+  }
+
+  .notable-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .notable-item:nth-child(3),
+  .notable-item:nth-child(4) {
+    border-right: none;
+  }
+
+  .notable-item:nth-child(3) {
+    border-right: 1px solid var(--color-divider);
+  }
+}
+
+/* --- Module 1: Brand Marquee (Client Logo Ticker) --- */
+.brand-marquee {
+  padding: 48px 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.brand-marquee-row {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.brand-marquee-row + .brand-marquee-row {
+  margin-top: 8px;
+}
+
+.brand-marquee-track {
+  display: inline-flex;
+  align-items: center;
+}
+
+.brand-marquee-row:first-child .brand-marquee-track {
+  animation: scroll-left 40s linear infinite;
+}
+
+.brand-marquee-row:last-child .brand-marquee-track {
+  animation: scroll-right 35s linear infinite;
+}
+
+.brand-marquee-item {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(13px, 1.5vw, 16px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: 0 12px;
+}
+
+.brand-marquee-sep {
+  color: var(--color-muted);
+  font-size: clamp(13px, 1.5vw, 16px);
+  user-select: none;
+}
+
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+/* --- Module 3: Discipline Ticker (Work Type Scroll) --- */
+.discipline-ticker {
+  padding: 16px 0 40px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.discipline-ticker-row {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.discipline-ticker-track {
+  display: inline-flex;
+  align-items: center;
+  animation: scroll-left 55s linear infinite;
+}
+
+.discipline-ticker-item {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(18px, 2.5vw, 28px);
+  letter-spacing: 0.04em;
+  color: rgba(17, 17, 17, 0.4);
+  padding: 0 8px;
+}
+
+.discipline-ticker-sep {
+  color: rgba(17, 17, 17, 0.4);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(18px, 2.5vw, 28px);
+  user-select: none;
+}
+
+/* --- Entrance animation for marquee + ticker sections --- */
+.brand-marquee,
+.discipline-ticker {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.brand-marquee.visible,
+.discipline-ticker.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .brand-marquee-track,
+  .discipline-ticker-track {
+    animation-play-state: paused;
+  }
+
+  .notable-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .brand-marquee,
+  .discipline-ticker {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
